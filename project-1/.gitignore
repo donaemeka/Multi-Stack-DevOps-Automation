@@ -1,0 +1,5 @@
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+bacon-EC2-sub-key.pem
+node_modules
