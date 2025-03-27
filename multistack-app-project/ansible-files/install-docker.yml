@@ -1,0 +1,27 @@
+---
+- name: Install Docker on EC2 Instances
+  hosts: backend, database, frontend
+  become: true
+  tasks:
+    - name: Update package cache
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Install required packages (Docker)
+      ansible.builtin.apt:
+        name:
+          - docker.io
+  
+    - name: Start and enable Docker service
+      ansible.builtin.systemd:
+        name: docker
+        state: started
+        enabled: true
+
+
+
+
+
+
+ 
+

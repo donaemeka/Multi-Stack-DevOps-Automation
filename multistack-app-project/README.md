@@ -1,15 +1,15 @@
 
 # microservice_based_app_project
 
-<!-- © 2024 | Ironhack -->
-
 ---
 
 # Multi-Stack Voting Application
 
-**Welcome to your DevOps practice project!** This repository hosts a multi-stack voting application composed of several services, each implemented in a different language and technology stack. The goal is to help you gain experience with containerization, orchestration, and running a distributed set of services—both individually and as part of a unified system.
+**Welcome to DevOps practice project!** This repository hosts a multi-stack voting application composed of several services, each implemented in a different language and technology stack. The goal is to gain experience with containerization, orchestration, and running a distributed set of services—both individually and as part of a unified system in aws infrastructure to ensure communication within frontend and backend as well as database.
 
-This application, while simple, uses multiple components commonly found in modern distributed architectures, giving you hands-on practice in connecting services, handling containers, and working with basic infrastructure automation.
+This application, while simple, uses multiple components commonly found in modern distributed architectures, provides hands-on practice in connecting services, handling containers, and working with basic infrastructure automation.
+
+                                  ![Project Architecture](image-1.png)
 
 ## Application Overview
 
@@ -23,14 +23,14 @@ The voting application includes:
 
 ### Why This Setup?
 
-The goal is to introduce you to a variety of languages, tools, and frameworks in one place. This is **not** a perfect production design. Instead, it’s intentionally diverse to help you:
+The goal is to integrate a variety of languages, tools, and frameworks in one place. This is **not** a perfect production design. Instead, it’s intentionally diverse for knowledge/practice:
 
 - Work with multiple runtimes and languages (Python, Node.js, .NET).
 - Interact with services like Redis and Postgres.
 - Containerize applications using Docker.
 - Use Docker Compose to orchestrate and manage multiple services together.
 
-By dealing with this “messy” environment, you’ll build real-world problem-solving skills. After this project, you should feel more confident tackling more complex deployments and troubleshooting issues in containerized, multi-service setups.
+By dealing with this “messy” environment, you’ll build real-world problem-solving skills. After this project, feel more confident tackling more complex deployments and troubleshooting issues in containerized, multi-service setups.
 
 ---
 
@@ -99,8 +99,8 @@ You can build each service with Docker and run them individually:
 
 - **Vote (Python)**:
   ```bash
-  docker build -t myorg/vote:latest ./vote
-  docker run --name vote -p 8080:80 myorg/vote:latest
+  docker build -t bacon21/vote:newest ./vote
+  docker run --name vote -p 8080:80 bacon21/vote:newest
   ```
   Visit [http://localhost:8080](http://localhost:8080).
 
@@ -111,8 +111,8 @@ You can build each service with Docker and run them individually:
 
 - **Worker (.NET)**:
   ```bash
-  docker build -t myorg/worker:latest ./worker
-  docker run --name worker myorg/worker:latest
+  docker build -t bacon21/worker:latest ./worker
+  docker run --name worker bacon21/worker:latest
   ```
   
 - **Postgres**:
@@ -122,8 +122,8 @@ You can build each service with Docker and run them individually:
 
 - **Result (Node.js)**:
   ```bash
-  docker build -t myorg/result:latest ./result
-  docker run --name result -p 8081:80 myorg/result:latest
+  docker build -t bacon21/result:newest ./result
+  docker run --name result -p 8081:80 bacon21/result:newest
   ```
   Visit [http://localhost:8081](http://localhost:8081).
 
@@ -156,4 +156,32 @@ docker buildx build --platform linux/amd64 -t myorg/worker:latest ./worker
 This ensures the image is built for the desired platform.
 
 ---
+
+## AWS infrastructure and serving the apps
+
+Provisioning aws infrastructure:
+Ensure to have aws account and signed through aws cli.
+
+```
+cd terraform-files
+run "terraform init"
+run "terraform plan"
+run "terraform apply"
+```
+
+This initializes terraform and prepares environment for running terraform files, displays planned deployments and provisions the necessary aws infrastructure to serve the applications in aws console.
+For example; Creates bastion host for accessing the ec2 instances which are in private subnets to prevent access from the internet except through the ALB which through its' DNS the frontend is accessible in the browser.
+
+Deploying all apps into them, ensuring they all communicate and accessible globally:
+
+```
+cd ansible-files
+run "ansible-playbook -i inventory.ini install-docker.yml"
+run "ansible-playbook -i inventory.ini frontend.yml"
+run "ansible-playbook -i inventory.ini backend.yml"
+run "ansible-playbook -i inventory.ini db.yml"
+```
+
+This installs docker in the respective ec2 instances(frontend, backend and database) for running the containers, deploys the apps in frontend, backend and database.
+
 >>>>>>> 0683ff6 (init content)

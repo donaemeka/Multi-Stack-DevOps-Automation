@@ -1,0 +1,36 @@
+---
+- name: Deploy Worker and Redis Containers
+  hosts: backend
+  become: true
+  tasks:
+
+    - name: Pull Redis image
+      docker_image:
+        name: redis
+        source: pull
+    - name: Run Redis Container
+      docker_container:
+        name: redis
+        image: redis
+        state: started
+        restart_policy: always
+        ports:
+          - "6379:6379"
+
+    - name: Pull worker image
+      docker_image:
+        name: "bacon21/worker:latest"
+        source: pull
+    - name: Run Worker Container
+      docker_container:
+        name: worker
+        image: "bacon21/worker:latest"
+        state: started
+        restart_policy: always
+
+        env:
+          REDIS_HOST: "redis"
+          DB_HOST: "10.0.3.225"
+          DB_USERNAME: "postgres"
+          DB_PASSWORD: "postgres"
+          DB_NAME: "postgres"

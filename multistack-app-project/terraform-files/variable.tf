@@ -61,9 +61,9 @@ variable "ami_id" {
     type        = string
 }
 
-variable "state-s3"{
+variable "state-s3-store"{
     description  = "s3 bucket for terraform state"
-    default      = "state-s3"
+    default      = "state-s3-store"
     type         = string
 }
 

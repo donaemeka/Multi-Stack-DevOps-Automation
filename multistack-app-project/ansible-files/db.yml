@@ -1,0 +1,26 @@
+---
+- name: Deploy PostgreSQL Container
+  hosts: database
+  become: true
+  tasks:
+    - name: Pull PostgreSQL image
+      community.docker.docker_image:
+        name: postgres:latest
+        source: pull
+
+    - name: Run PostgreSQL Container
+      docker_container:
+        name: postgres
+        image: postgres:latest
+        state: started
+        restart_policy: always
+        env:
+          POSTGRES_USER: "postgres"
+          POSTGRES_DB: "postgres"
+          POSTGRES_PASSWORD: "postgres"
+        ports:
+          - "5432:5432"
+        volumes:
+          - postgres_data:/var/lib/postgresql/data  
+          - /var/lib/docker/volumes/postgres_data/_data/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf  
+        command: postgres -c 'config_file=/var/lib/postgresql/data/postgresql.conf'
