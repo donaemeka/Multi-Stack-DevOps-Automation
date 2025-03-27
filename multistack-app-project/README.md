@@ -9,8 +9,6 @@
 
 This application, while simple, uses multiple components commonly found in modern distributed architectures, provides hands-on practice in connecting services, handling containers, and working with basic infrastructure automation.
 
-                                  ![Project Architecture](image-1.png)
-
 ## Application Overview
 
 The voting application includes:
