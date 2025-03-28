@@ -8,7 +8,7 @@
         source: pull
       with_items:
         - "bacon21/vote:newest"
-        - "bacon21/result:newest"
+        - "bacon21/result:v2"
 
     - name: Run Vote App Container
       docker_container:
@@ -27,7 +27,7 @@
     - name: Run Result App Container
       docker_container:
         name: result
-        image: "bacon21/result:newest"
+        image: "bacon21/result:v2"
         state: started
         restart_policy: always
         ports:
