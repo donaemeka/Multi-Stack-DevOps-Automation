@@ -11,7 +11,7 @@ This application, while simple, uses multiple components commonly found in moder
 
 ## Application Overview
 
-![Architecture](/image.png)
+![Architecture](multistack-app-project/image.png)
 
 The voting application includes:
 
