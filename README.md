@@ -11,7 +11,11 @@ This application, while simple, uses multiple components commonly found in moder
 
 ## Application Overview
 
+<<<<<<< HEAD
 ![Architecture](multistack-app-project/image.png)
+=======
+![Architecture](images/image.png)
+>>>>>>> 3d16a3c (updated ansible-files)
 
 The voting application includes:
 

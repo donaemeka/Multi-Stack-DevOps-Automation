@@ -16,14 +16,12 @@ namespace Worker
         {
             try
             {
-                Console.WriteLine("Booting up C#");
                 // Fetch configuration from environment variables
                 var dbHost = Environment.GetEnvironmentVariable("DB_HOST") ?? "db";
                 var dbUsername = Environment.GetEnvironmentVariable("DB_USERNAME") ?? "postgres";
                 var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "postgres";
                 var dbName = Environment.GetEnvironmentVariable("DB_NAME") ?? "postgres";
-
-            
+                
                 var redisHost = Environment.GetEnvironmentVariable("REDIS_HOST") ?? "redis";
 
                 // Construct the connection strings
@@ -112,7 +110,7 @@ namespace Worker
 
             var command = connection.CreateCommand();
             command.CommandText = @"CREATE TABLE IF NOT EXISTS votes (
-                                        id VARCHAR(255) NOT NULL UNIQUE,
+                                        id VARCHAR(255) NOT NULL,
                                         vote VARCHAR(255) NOT NULL
                                     )";
             command.ExecuteNonQuery();
