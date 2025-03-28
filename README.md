@@ -11,6 +11,8 @@ This application, while simple, uses multiple components commonly found in moder
 
 ## Application Overview
 
+![Architecture](images/image.png)
+
 The voting application includes:
 
 - **Vote (Python)**: A Python Flask-based web application where users can vote between two options.
