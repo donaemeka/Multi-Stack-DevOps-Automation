@@ -11,7 +11,7 @@ This application, while simple, uses multiple components commonly found in moder
 
 ## Application Overview
 
-![Architecture](images/image.png)
+![Architecture](/image.png)
 
 The voting application includes:
 
