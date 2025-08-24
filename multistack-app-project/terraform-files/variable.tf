@@ -57,7 +57,7 @@ variable "ec2_bastion_host"{
 
 variable "ami_id" {
     description = "AMI ID for EC2 instances"
-    default     = "ami-04f5a6a7ecc99fbe2"
+    default = "ami-0561ca6a3f5ce98d7"
     type        = string
 }
 

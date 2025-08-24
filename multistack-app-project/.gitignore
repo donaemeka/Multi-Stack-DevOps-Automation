@@ -1,5 +1,7 @@
 .terraform
 terraform.tfstate
 terraform.tfstate.backup
-bacon-EC2-sub-key.pem
+emeka123.pem
 node_modules
+# Ignore Ansible inventory with sensitive info
+ansible/inventory/private_hosts.ini

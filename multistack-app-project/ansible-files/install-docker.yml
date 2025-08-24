@@ -4,24 +4,17 @@
   become: true
   tasks:
     - name: Update package cache
-      ansible.builtin.apt:
-        update_cache: true
+      ansible.builtin.yum:
+        update_cache: yes
 
     - name: Install required packages (Docker)
-      ansible.builtin.apt:
+      ansible.builtin.yum:
         name:
-          - docker.io
-  
+          - docker
+        state: present
+
     - name: Start and enable Docker service
-      ansible.builtin.systemd:
+      ansible.builtin.service:
         name: docker
         state: started
         enabled: true
-
-
-
-
-
-
- 
-

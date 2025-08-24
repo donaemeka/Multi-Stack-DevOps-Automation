@@ -5,8 +5,8 @@ var express = require('express'),
     path = require('path'),
     app = express(),
     server = require('http').Server(app),
-    // IMPORTANT: Socket.IO path is /result/socket.io
-    io = require('socket.io')(server, { path: '/result/socket.io' });
+    // CORRECTION: Changed Socket.IO path to root to match client expectations
+    io = require('socket.io')(server, { path: '/socket.io' });  // CHANGED THIS LINE
 
 var port = process.env.PORT || 4000;
 

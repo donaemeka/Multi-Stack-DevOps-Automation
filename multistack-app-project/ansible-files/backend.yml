@@ -19,12 +19,12 @@
 
     - name: Pull worker image
       docker_image:
-        name: "bacon21/worker:latest"
+        name: "donaemeka/worker:latest"
         source: pull
     - name: Run Worker Container
       docker_container:
         name: worker
-        image: "bacon21/worker:latest"
+        image: "donaemeka/worker:latest"
         state: started
         restart_policy: always
 
