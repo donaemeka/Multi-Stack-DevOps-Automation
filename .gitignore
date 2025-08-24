@@ -1,0 +1,7 @@
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+emeka123.pem
+node_modules
+# Ignore Ansible inventory with sensitive info
+ansible/inventory/private_hosts.ini

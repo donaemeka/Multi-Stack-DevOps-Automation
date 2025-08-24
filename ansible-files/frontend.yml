@@ -1,0 +1,42 @@
+- name: Deploy vote and result
+  hosts: frontend
+  become: true
+  tasks:
+    - name: Pull vote and result images
+      docker_image:
+        name: "{{ item }}"
+        source: pull
+      with_items:
+        - "donaemeka/vote:latest"
+        - "bacon21/finalresult:latest"
+
+    - name: Run Vote App Container
+      docker_container:
+        name: vote
+        image: "donaemeka/vote:latest"
+        state: started
+        restart_policy: always
+        ports:
+          - "80:80"
+        networks:
+          - name: app_network
+        env:
+          REDIS_HOST: "10.0.3.76"
+          REDIS_PORT: "6379" 
+
+    - name: Run Result App Container
+      docker_container:
+        name: result
+        image: "donaemeka/vote:latest"
+        state: started
+        restart_policy: always
+        ports:
+          - "81:80"
+        networks:
+          - name: app_network
+        env:
+          PG_HOST: "10.0.3.225"
+          PG_USER: "postgres"
+          PG_PASSWORD: "postgres"
+          PG_DATABASE: "postgres"
+          PG_PORT: "5432"
