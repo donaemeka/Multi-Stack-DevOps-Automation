@@ -8,12 +8,22 @@ A microservices voting application (Cats vs. Dogs) that I built and deployed fro
 
  containerize, and automate the deployment of a full-stack application using modern DevOps practices on AWS.
 
-## 🏗️ Architecture 
+## Architecture Diagram
   
 ![Architecture Diagram](images/architecture.png)
 
 
-## Tech Stack
+### Live Application
+
+| Voting Page (`:8080`) | Results Page (`:8081`) |
+| :---: | :---: |
+| <img src="images/vote-app-screenshot.png" width="400"> | <img src="images/results-app-screenshot.png" width="400"> |
+
+| *Users can vote for Cats or Dogs* | *Real-time results dashboard with live updates* |
+
+
+
+## 🏗️ Architecture & Tech Stack
 
 - Infrastructure as Code: Terraform, Ansible
 
