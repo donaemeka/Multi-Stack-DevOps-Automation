@@ -66,17 +66,13 @@ A microservices voting application (Cats vs. Dogs) that I built and deployed fro
 
 ## 🎯 Key Achievements
 
-- Full Automation:  Provisioned AWS infrastructure (VPC, EC2, Security Groups) with Terraform and deployed applications with Ansible, reducing 
+- Full Automation:  Provisioned AWS infrastructure (VPC, EC2, Security Groups) with Terraform and deployed applications with Ansible, reducing deployment time from hours to under 5 minutes.
 
-deployment time from hours to under 5 minutes.
-
--  Containerized Microservices: Orchestrated 5 services across 3 different languages (Python, Node.js, .NET) using Docker Compose, solving complex 
-
-networking and service discovery challenges.
+-  Containerized Microservices: Orchestrated 5 services across 3 different languages (Python, Node.js, .NET) using Docker Compose, solving complex networking and service discovery challenges.
 
 - Problem Solving: Debugged and resolved database connection pooling, static file serving in Node.js, and real-time WebSocket communication issues.
 
-Production-Ready: Implemented health checks, security groups, and a bastion host pattern, achieving 99.9% availability during testing.
+- Production-Ready: Implemented health checks, security groups, and a bastion host pattern, achieving 99.9% availability during testing.
 
 ## 📊 Performance Metrics
 
